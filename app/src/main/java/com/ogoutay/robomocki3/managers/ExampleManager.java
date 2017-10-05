@@ -21,6 +21,10 @@ public final class ExampleManager {
         managerCallback.onVisibilityFetched(View.VISIBLE);
     }
 
+    public void setString(String string) {
+        //No-op, just for argument captors example
+    }
+
     public String getServiceName() {
         return SERVICE_NAME;
     }

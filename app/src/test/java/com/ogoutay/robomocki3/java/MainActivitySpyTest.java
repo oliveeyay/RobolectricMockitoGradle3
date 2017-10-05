@@ -12,6 +12,7 @@ import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
@@ -52,6 +53,11 @@ public class MainActivitySpyTest {
     public void testMainActivity() {
         //Verify this method has been called
         Mockito.verify(spyExampleManager).getServiceName();
+
+        //Using ArgumentCaptor to capture arguments, and then asserting
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+        Mockito.verify(spyExampleManager).setString(argumentCaptor.capture());
+        assertEquals(MainActivity.TAG, argumentCaptor.getValue());
 
         //Assert the TextView has the real value
         assertEquals(new ExampleManager().getServiceName(), ((TextView) activity.findViewById(R.id.textView)).getText());

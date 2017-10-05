@@ -13,6 +13,8 @@ import com.ogoutay.robomocki3.managers.ExampleManager;
  */
 public class MainActivity extends AppCompatActivity implements ManagerCallback {
 
+    public final static String TAG = "MainActivity";
+
     private TextView mTextView;
 
     private final ExampleManager mExampleManager = new ExampleManager();
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements ManagerCallback {
 
         mTextView.setText(mExampleManager.getServiceName());
         mExampleManager.fetchVisibility(this);
+        mExampleManager.setString(TAG);
     }
 
     @Override

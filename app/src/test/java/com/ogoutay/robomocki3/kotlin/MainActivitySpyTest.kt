@@ -11,6 +11,7 @@ import org.joor.Reflect
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
@@ -52,6 +53,11 @@ class MainActivitySpyTest {
     fun testMainActivity() {
         //Verify this method has been called
         Mockito.verify(spyExampleManager).serviceName
+
+        //Using ArgumentCaptor to capture arguments, and then asserting
+        val argumentCaptor = ArgumentCaptor.forClass(String::class.java)
+        Mockito.verify(spyExampleManager).setString(argumentCaptor.capture())
+        assertEquals(MainActivity.TAG, argumentCaptor.value)
 
         //Assert the TextView has the real value
         assertEquals(ExampleManager().serviceName, activity.findViewById<TextView>(R.id.textView).text)
