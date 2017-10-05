@@ -11,8 +11,8 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Spy
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -24,7 +24,7 @@ import org.robolectric.annotation.Config
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, sdk = intArrayOf(21), packageName = BuildConfig.APPLICATION_ID)
-class MainActivityTest {
+class MainActivitySpyTest {
 
     companion object {
         private const val MOCKED_VALUE = "toto"
@@ -32,8 +32,8 @@ class MainActivityTest {
 
     private lateinit var activity: Activity
 
-    @Mock
-    private lateinit var mockExampleManager: ExampleManager
+    @Spy
+    private lateinit var spyExampleManager: ExampleManager
 
     @Before
     fun setUp() {
@@ -41,9 +41,8 @@ class MainActivityTest {
         val activityController = Robolectric.buildActivity(MainActivity::class.java)
 
         //Mocking ExampleManager within the Activity
-        mockExampleManager = Mockito.mock(ExampleManager::class.java)
-        Mockito.`when`(mockExampleManager.serviceName).thenReturn(MOCKED_VALUE)
-        Reflect.on(activityController.get()).set("mExampleManager", mockExampleManager)
+        spyExampleManager = Mockito.spy(ExampleManager::class.java)
+        Reflect.on(activityController.get()).set("mExampleManager", spyExampleManager)
 
         //Launching the Activity
         activityController.setup()
@@ -53,10 +52,10 @@ class MainActivityTest {
     @Test
     fun testMainActivity() {
         //Verify this method has been called
-        Mockito.verify(mockExampleManager).serviceName
+        Mockito.verify(spyExampleManager).serviceName
 
-        //Assert the TextView has the mocked value
-        Assert.assertEquals(MOCKED_VALUE, activity.findViewById<TextView>(R.id.textView).text)
+        //Assert the TextView has the real value
+        Assert.assertEquals(ExampleManager().serviceName, activity.findViewById<TextView>(R.id.textView).text)
     }
 
 }

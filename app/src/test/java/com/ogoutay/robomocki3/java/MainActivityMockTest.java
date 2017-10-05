@@ -26,7 +26,7 @@ import org.robolectric.annotation.Config;
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, packageName = BuildConfig.APPLICATION_ID)
-public class MainActivityTest {
+public class MainActivityMockTest {
 
     private static final String MOCKED_VALUE = "toto";
 

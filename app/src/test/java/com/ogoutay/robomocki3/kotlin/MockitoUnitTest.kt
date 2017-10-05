@@ -12,6 +12,10 @@ import org.mockito.Mockito
  */
 class MockitoUnitTest {
 
+    companion object {
+        private const val MOJITO = "Mojito!"
+    }
+
     @Mock
     private lateinit var exampleManager: ExampleManager
 
@@ -24,10 +28,6 @@ class MockitoUnitTest {
     @Test
     fun testMockito() {
         assertEquals(MOJITO, exampleManager.serviceName)
-    }
-
-    companion object {
-        private const val MOJITO = "Mojito!"
     }
 
 }
