@@ -11,10 +11,11 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito
+import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
-import org.robolectric.Robolectric
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -30,6 +31,8 @@ class MainActivityTest {
     }
 
     private lateinit var activity: Activity
+
+    @Mock
     private lateinit var mockExampleManager: ExampleManager
 
     @Before

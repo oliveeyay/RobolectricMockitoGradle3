@@ -14,6 +14,7 @@ import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
@@ -30,6 +31,8 @@ public class MainActivityTest {
     private static final String MOCKED_VALUE = "toto";
 
     private Activity activity;
+
+    @Mock
     private ExampleManager mockExampleManager;
 
     @Before
