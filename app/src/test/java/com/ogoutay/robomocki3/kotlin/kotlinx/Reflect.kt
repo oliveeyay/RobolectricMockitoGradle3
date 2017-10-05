@@ -9,7 +9,7 @@ import java.lang.reflect.Modifier
  */
 @Throws(Exception::class)
 fun Reflect.setFinalStatic(name: String, newValue: Any) {
-    val field = this.get<Class<*>>().getField(name)
+    val field = this.get<Class<*>>().getDeclaredField(name)
 
     field.isAccessible = true
     val modifiersField = Field::class.java.getDeclaredField("modifiers")

@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.ogoutay.robomocki3.R;
-import com.ogoutay.robomocki3.manager.ServiceManager;
+import com.ogoutay.robomocki3.manager.ExampleManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final ServiceManager mServiceManager = new ServiceManager();
+    private final ExampleManager mExampleManager = new ExampleManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        ((TextView) findViewById(R.id.textView)).setText(mServiceManager.getServiceName());
+        ((TextView) findViewById(R.id.textView)).setText(mExampleManager.getServiceName());
     }
 }

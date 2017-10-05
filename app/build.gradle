@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.ogoutay.robomocki3"
         minSdkVersion 21
@@ -37,10 +37,10 @@ dependencies {
     testImplementation ("org.robolectric:robolectric:3.3.2") {
         exclude module: 'icu4j'
     }
-    testImplementation "org.mockito:mockito-inline:2.10.0"
-    testImplementation "org.jooq:joor:0.9.6"
+    testImplementation "org.mockito:mockito-core:2.10.0"
+    testImplementation "org.jooq:joor:0.9.6"// Reflection helper used with Mockito
+
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    // Reflection helper used with Mockito
 }
 repositories {
     mavenCentral()
