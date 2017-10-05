@@ -2,14 +2,14 @@ package com.ogoutay.robomocki3.kotlin
 
 import com.netflix.mediaclient.kotlinx.setFinalStatic
 import com.ogoutay.robomocki3.BuildConfig
+import com.ogoutay.robomocki3.managers.ExampleManager
+import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertNotSame
 import org.joor.Reflect
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see [Testing documentation](http://d.android.com/tools/testing)
+ * Example of using the [Reflect] library with [org.junit.runners.JUnit4]
  */
 class KotlinUnitTest {
 
@@ -22,6 +22,13 @@ class KotlinUnitTest {
 
     @Test
     fun testReflection() {
+        //Reflect on regular fields
+        val exampleManager = ExampleManager()
+        assertNotSame("toto", exampleManager.privateString)
+        Reflect.on(exampleManager).set("mPrivateString", "toto")
+        assertEquals("toto", exampleManager.privateString)
+
+        //Reflect on private final static
         assertEquals(true, BuildConfig.DEBUG)
         Reflect.on(BuildConfig::class.java).setFinalStatic("DEBUG", false)
         assertEquals(false, BuildConfig.DEBUG)

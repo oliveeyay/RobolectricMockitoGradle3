@@ -9,8 +9,6 @@ import com.ogoutay.robomocki3.activities.MainActivity;
 import com.ogoutay.robomocki3.interfaces.ManagerCallback;
 import com.ogoutay.robomocki3.managers.ExampleManager;
 
-import junit.framework.Assert;
-
 import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +23,10 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
- * Created by ogoutay on 10/3/17.
+ * Demonstrates how to mock a void method, and use its arguments
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, packageName = BuildConfig.APPLICATION_ID)
@@ -61,7 +61,7 @@ public class MainActivityMockVoidTest {
     @Test
     public void testMainActivity() {
         //Assert the TextView text color is GONE in this case
-        Assert.assertEquals(View.GONE, activity.findViewById(R.id.textView).getVisibility());
+        assertEquals(View.GONE, activity.findViewById(R.id.textView).getVisibility());
     }
 
 }

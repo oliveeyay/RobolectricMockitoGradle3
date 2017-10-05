@@ -8,8 +8,6 @@ import com.ogoutay.robomocki3.R;
 import com.ogoutay.robomocki3.activities.MainActivity;
 import com.ogoutay.robomocki3.managers.ExampleManager;
 
-import junit.framework.Assert;
-
 import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,8 +19,10 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
- * Created by ogoutay on 10/3/17.
+ * Demonstrates how to spy on an object
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, packageName = BuildConfig.APPLICATION_ID)
@@ -53,7 +53,7 @@ public class MainActivitySpyTest {
         Mockito.verify(spyExampleManager).getServiceName();
 
         //Assert the TextView has the real value
-        Assert.assertEquals(new ExampleManager().getServiceName(), ((TextView) activity.findViewById(R.id.textView)).getText());
+        assertEquals(new ExampleManager().getServiceName(), ((TextView) activity.findViewById(R.id.textView)).getText());
     }
 
 }

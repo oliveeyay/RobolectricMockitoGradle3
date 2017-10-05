@@ -9,8 +9,6 @@ import com.ogoutay.robomocki3.R;
 import com.ogoutay.robomocki3.activities.MainActivity;
 import com.ogoutay.robomocki3.managers.ExampleManager;
 
-import junit.framework.Assert;
-
 import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +20,10 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
- * Created by ogoutay on 10/3/17.
+ * Demonstrates how to mock a typed method and return something else
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, packageName = BuildConfig.APPLICATION_ID)
@@ -57,10 +57,10 @@ public class MainActivityMockTest {
         Mockito.verify(mockExampleManager).getServiceName();
 
         //Assert the TextView has the mocked value
-        Assert.assertEquals(MOCKED_VALUE, ((TextView) activity.findViewById(R.id.textView)).getText());
+        assertEquals(MOCKED_VALUE, ((TextView) activity.findViewById(R.id.textView)).getText());
 
         //Assert the TextView visibility is regular visible in this case
-        Assert.assertEquals(View.VISIBLE, activity.findViewById(R.id.textView).getVisibility());
+        assertEquals(View.VISIBLE, activity.findViewById(R.id.textView).getVisibility());
     }
 
 }

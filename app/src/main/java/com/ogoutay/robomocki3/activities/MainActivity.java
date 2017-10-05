@@ -8,6 +8,9 @@ import com.ogoutay.robomocki3.R;
 import com.ogoutay.robomocki3.interfaces.ManagerCallback;
 import com.ogoutay.robomocki3.managers.ExampleManager;
 
+/**
+ * Just a regular {@link android.app.Activity} for reflection/mock purpose
+ */
 public class MainActivity extends AppCompatActivity implements ManagerCallback {
 
     private TextView mTextView;

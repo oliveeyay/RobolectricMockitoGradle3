@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * Created by ogoutay on 10/5/17.
+ * A simple example of using {@link Mockito} with {@link org.junit.runners.JUnit4}
  */
 public class JavaMockitoUnitTest {
 

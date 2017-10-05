@@ -8,7 +8,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 /**
- * Created by ogoutay on 10/5/17.
+ * A simple example of using [Mockito] with [org.junit.runners.JUnit4]
  */
 class KotlinMockitoUnitTest {
 

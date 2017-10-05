@@ -1,7 +1,7 @@
 package com.ogoutay.robomocki3.interfaces;
 
 /**
- * Created by ogoutay on 10/5/17.
+ * Just an example of interface to callback, for reflection/mock purpose
  */
 public interface ManagerCallback {
 
