@@ -10,7 +10,7 @@ import org.mockito.Mockito
 /**
  * Created by ogoutay on 10/5/17.
  */
-class MockitoUnitTest {
+class KotlinMockitoUnitTest {
 
     companion object {
         private const val MOJITO = "Mojito!"

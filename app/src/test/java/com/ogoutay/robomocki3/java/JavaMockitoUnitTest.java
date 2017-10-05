@@ -12,7 +12,7 @@ import static junit.framework.Assert.assertEquals;
 /**
  * Created by ogoutay on 10/5/17.
  */
-public class MockitoUnitTest {
+public class JavaMockitoUnitTest {
 
     private static final String MOJITO = "Mojito!";
 

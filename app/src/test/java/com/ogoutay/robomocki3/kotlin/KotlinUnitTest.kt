@@ -2,11 +2,9 @@ package com.ogoutay.robomocki3.kotlin
 
 import com.netflix.mediaclient.kotlinx.setFinalStatic
 import com.ogoutay.robomocki3.BuildConfig
-import com.ogoutay.robomocki3.managers.ExampleManager
 import org.joor.Reflect
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.mockito.Mockito
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -27,13 +25,6 @@ class KotlinUnitTest {
         assertEquals(true, BuildConfig.DEBUG)
         Reflect.on(BuildConfig::class.java).setFinalStatic("DEBUG", false)
         assertEquals(false, BuildConfig.DEBUG)
-    }
-
-    @Test
-    fun testMockito() {
-        val exampleManager = Mockito.mock(ExampleManager::class.java)
-        Mockito.`when`(exampleManager.serviceName).thenReturn(MOJITO)
-        assertEquals(MOJITO, exampleManager.serviceName)
     }
 
 }
