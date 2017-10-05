@@ -1,6 +1,6 @@
 package com.ogoutay.robomocki3.kotlin
 
-import com.ogoutay.robomocki3.manager.ExampleManager
+import com.ogoutay.robomocki3.managers.ExampleManager
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

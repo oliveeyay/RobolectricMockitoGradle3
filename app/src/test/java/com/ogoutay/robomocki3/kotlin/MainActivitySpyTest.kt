@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.ogoutay.robomocki3.BuildConfig
 import com.ogoutay.robomocki3.R
 import com.ogoutay.robomocki3.activities.MainActivity
-import com.ogoutay.robomocki3.manager.ExampleManager
+import com.ogoutay.robomocki3.managers.ExampleManager
 import org.joor.Reflect
 import org.junit.Assert
 import org.junit.Before

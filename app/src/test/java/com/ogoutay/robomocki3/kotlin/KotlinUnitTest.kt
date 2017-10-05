@@ -2,7 +2,7 @@ package com.ogoutay.robomocki3.kotlin
 
 import com.netflix.mediaclient.kotlinx.setFinalStatic
 import com.ogoutay.robomocki3.BuildConfig
-import com.ogoutay.robomocki3.manager.ExampleManager
+import com.ogoutay.robomocki3.managers.ExampleManager
 import org.joor.Reflect
 import org.junit.Assert.assertEquals
 import org.junit.Test

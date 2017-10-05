@@ -1,11 +1,12 @@
 package com.ogoutay.robomocki3.java;
 
 import android.app.Activity;
-import android.widget.TextView;
+import android.view.View;
 
 import com.ogoutay.robomocki3.BuildConfig;
 import com.ogoutay.robomocki3.R;
 import com.ogoutay.robomocki3.activities.MainActivity;
+import com.ogoutay.robomocki3.interfaces.ManagerCallback;
 import com.ogoutay.robomocki3.managers.ExampleManager;
 
 import junit.framework.Assert;
@@ -14,8 +15,11 @@ import org.joor.Reflect;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
@@ -26,12 +30,12 @@ import org.robolectric.annotation.Config;
  */
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21, packageName = BuildConfig.APPLICATION_ID)
-public class MainActivitySpyTest {
+public class MainActivityMockVoidTest {
 
     private Activity activity;
 
-    @Spy
-    private ExampleManager spyExampleManager;
+    @Mock
+    private ExampleManager mockExampleManager;
 
     @Before
     public void setUp() {
@@ -39,8 +43,15 @@ public class MainActivitySpyTest {
         ActivityController<MainActivity> activityController = Robolectric.buildActivity(MainActivity.class);
 
         //Mocking ExampleManager within the Activity
-        spyExampleManager = Mockito.spy(ExampleManager.class);
-        Reflect.on(activityController.get()).set("mExampleManager", spyExampleManager);
+        mockExampleManager = Mockito.mock(ExampleManager.class);
+        Mockito.doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                ((ManagerCallback) invocation.getArgument(0)).onVisibilityFetched(View.GONE);
+                return null;
+            }
+        }).when(mockExampleManager).fetchVisibility(ArgumentMatchers.isA(ManagerCallback.class));
+        Reflect.on(activityController.get()).set("mExampleManager", mockExampleManager);
 
         //Launching the Activity
         activityController.setup();
@@ -49,11 +60,8 @@ public class MainActivitySpyTest {
 
     @Test
     public void testMainActivity() {
-        //Verify this method has been called
-        Mockito.verify(spyExampleManager).getServiceName();
-
-        //Assert the TextView has the real value
-        Assert.assertEquals(new ExampleManager().getServiceName(), ((TextView) activity.findViewById(R.id.textView)).getText());
+        //Assert the TextView text color is GONE in this case
+        Assert.assertEquals(View.GONE, activity.findViewById(R.id.textView).getVisibility());
     }
 
 }
