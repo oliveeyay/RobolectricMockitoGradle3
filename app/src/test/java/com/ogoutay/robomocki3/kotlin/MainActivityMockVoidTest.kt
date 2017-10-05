@@ -15,6 +15,7 @@ import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -37,7 +38,7 @@ class MainActivityMockVoidTest {
         val activityController = Robolectric.buildActivity(MainActivity::class.java)
 
         //Mocking ExampleManager within the Activity
-        mockExampleManager = Mockito.mock(ExampleManager::class.java)
+        MockitoAnnotations.initMocks(this)
         Mockito.doAnswer {
             it.getArgument<ManagerCallback>(0).onVisibilityFetched(View.GONE)
         }.`when`<ExampleManager>(mockExampleManager).fetchVisibility(ArgumentMatchers.isA(ManagerCallback::class.java))

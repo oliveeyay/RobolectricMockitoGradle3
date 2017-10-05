@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.robolectric.Robolectric;
@@ -43,7 +44,7 @@ public class MainActivityMockVoidTest {
         ActivityController<MainActivity> activityController = Robolectric.buildActivity(MainActivity.class);
 
         //Mocking ExampleManager within the Activity
-        mockExampleManager = Mockito.mock(ExampleManager.class);
+        MockitoAnnotations.initMocks(this);
         Mockito.doAnswer(new Answer() {
             @Override
             public Object answer(InvocationOnMock invocation) throws Throwable {

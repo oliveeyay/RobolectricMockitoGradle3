@@ -12,6 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import org.mockito.Spy
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
@@ -39,7 +40,7 @@ class MainActivitySpyTest {
         val activityController = Robolectric.buildActivity(MainActivity::class.java)
 
         //Mocking ExampleManager within the Activity
-        spyExampleManager = Mockito.spy(ExampleManager::class.java)
+        MockitoAnnotations.initMocks(this)
         Reflect.on(activityController.get()).set("mExampleManager", spyExampleManager)
 
         //Launching the Activity

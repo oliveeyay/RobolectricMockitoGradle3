@@ -6,6 +6,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 
 /**
  * A simple example of using [Mockito] with [org.junit.runners.JUnit4]
@@ -21,7 +22,7 @@ class KotlinMockitoUnitTest {
 
     @Before
     fun setUp() {
-        exampleManager = Mockito.mock(ExampleManager::class.java)
+        MockitoAnnotations.initMocks(this)
         Mockito.`when`(exampleManager.serviceName).thenReturn(MOJITO)
     }
 

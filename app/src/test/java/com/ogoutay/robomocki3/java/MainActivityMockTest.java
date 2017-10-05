@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.android.controller.ActivityController;
@@ -42,7 +43,7 @@ public class MainActivityMockTest {
         ActivityController<MainActivity> activityController = Robolectric.buildActivity(MainActivity.class);
 
         //Mocking ExampleManager within the Activity
-        mockExampleManager = Mockito.mock(ExampleManager.class);
+        MockitoAnnotations.initMocks(this);
         Mockito.when(mockExampleManager.getServiceName()).thenReturn(MOCKED_VALUE);
         Reflect.on(activityController.get()).set("mExampleManager", mockExampleManager);
 

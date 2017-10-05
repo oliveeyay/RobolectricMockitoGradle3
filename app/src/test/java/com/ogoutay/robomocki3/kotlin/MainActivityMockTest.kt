@@ -13,6 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -39,7 +40,7 @@ class MainActivityMockTest {
         val activityController = Robolectric.buildActivity(MainActivity::class.java)
 
         //Mocking ExampleManager within the Activity
-        mockExampleManager = Mockito.mock(ExampleManager::class.java)
+        MockitoAnnotations.initMocks(this)
         Mockito.`when`(mockExampleManager.serviceName).thenReturn(MOCKED_VALUE)
         Reflect.on(activityController.get()).set("mExampleManager", mockExampleManager)
 

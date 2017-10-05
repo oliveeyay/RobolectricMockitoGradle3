@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -21,7 +22,7 @@ public class JavaMockitoUnitTest {
 
     @Before
     public void setUp() {
-        exampleManager = Mockito.mock(ExampleManager.class);
+        MockitoAnnotations.initMocks(this);
         Mockito.when(exampleManager.getServiceName()).thenReturn(MOJITO);
     }
 
